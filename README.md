@@ -15,7 +15,7 @@ npm install
 
 At this point you can start the collision finder program by typing
 ```
-node finder.js
+node search.js
 ```
 and follow the prompts.
 
