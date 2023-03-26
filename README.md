@@ -1,4 +1,4 @@
-# ZioPeraFinder
+# LWS-Toolbox
 
 This tools helps you searching collisions starting from X, Y, Z coordinates and a search radius. It's useful to find the corresponding collision "chunk" file when editing a building.
 
@@ -8,7 +8,7 @@ The program will take X, Y, Z coordinates of the point that we want to look for 
 
 First of all you need NodeJS (LTS), the installer will do the job for you, so steps wont be included in the guide.
 
-Once you have downloaded ZioPeraFinder, open the folder and type the command below to install all the dependencies
+Once you have downloaded lws-toolbox, open the folder and type the command below to install all the dependencies
 ```
 npm install
 ```
