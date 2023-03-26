@@ -1,25 +1,25 @@
 # ZioPeraFinder
 
-Tool per trovare le collisioni date coordinate X, Y, Z e raggio di ricerca. Utile per trovare le collisioni corrispondenti alla porzione del terreno di un modello di edificio che si vuole modificare.
+This tools helps you searching collisions starting from X, Y, Z coordinates and a search radius. It's useful to find the corresponding collision "chunk" file when editing a building.
 
-Il programma richiederà in input le coordinate di cui si vuole cercare ed un raggio di ricerca, procederà a scansionare la cartella contenente tutti i file .xml e misurare la distanza. Se ricade entro il raggio inserito, allora verrà restituita la corrispondenza. Se la ricerca non dovesse produrre risultati verranno date in ordine crescente le collisioni più vicine trovate al punto specificato.
+The program will take X, Y, Z coordinates of the point that we want to look for and a search radius as input. If the research doesn't give any result, it will return the nearest collisions files.
 
-## Come usarlo
+## How to use it
 
-Bisogna prima installare NodeJS (versione LTS), ha un installer quindi non curerò i passaggi nella guida.
+First of all you need NodeJS (LTS), the installer will do the job for you, so steps wont be included in the guide.
 
-Una volta scaricato ZioPeraFinder ed entrati nella cartella, bisogna eseguire il seguente comando per scaricare le dipendenze: 
+Once you have downloaded ZioPeraFinder, open the folder and type the command below to install all the dependencies
 ```
 npm install
 ```
 
-Effettuato il comando sarà sufficiente avviare lo script mediante
+At this point you can start the collision finder program by typing
 ```
-node app.js
+node finder.js
 ```
-e seguire i passaggi richiesti.
+and follow the prompts.
+
+If you want to use the exporter from xml -> json for `lws-maputils` just use the same command but provide `export.js` instead.
 
 ### NB.
-Ricordati di inserire i numeri con la virgola usando il `.` come separatore decimale, ma vista la natura della ricerca può essere omessa la parte decimale senza compromettere la precisione dei risultati.
-
-Consiglio inoltre di inserire il percorso alla cartella semplicemente trascinandola sulla riga di comando dall'esplora file (la inserisce in automatico).
+Remember to use `.` as a decimal separator, you can also just ignore the decimal part in coordinates since the search algorithm doesn't need accurate information to give decent results.
