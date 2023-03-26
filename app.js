@@ -6,10 +6,10 @@ async function init() {
     let { collisionsFolder } = await inquirer.prompt({
         type: 'input',
         name: 'collisionsFolder',
-        message: 'Percorso alla cartella contenente i file delle collisioni:',
+        message: 'Path to collisions folder:',
         validate(answer) {
             if(answer.length < 1) {
-                return "Percorso non valido"
+                return "Invalid Path"
             }
     
             return true
@@ -19,22 +19,22 @@ async function init() {
         {
             type: 'number',
             name: 'coordsX',
-            message: 'Coordinata X:'
+            message: 'X Coords:'
         },
         {
             type: 'number',
             name: 'coordsY',
-            message: 'Coordinata Y:'
+            message: 'Y Coords:'
         },
         {
             type: 'number',
             name: 'coordsZ',
-            message: 'Coordinata Z:'
+            message: 'Z Coords:'
         },
         {
             type: 'number',
             name: 'radius',
-            message: 'Raggio:'
+            message: 'Radius:'
         }
     ])
     collisionsFolder = collisionsFolder.replace(/'/g, '')
@@ -57,23 +57,23 @@ async function searchForCollision(collisionsFolder, coordsX, coordsY, coordsZ, s
         distances.push({ fileName, distance })
         if (distance <= searchRadius) {
             found++
-            console.log(`Trovata possibile collisione in ${fileName}.\nCoordinate centro: ${centerX} ${centerY} ${centerZ}\nRaggio: ${radius}`)
+            console.log(`Found possible collision in ${fileName}.\nCenter coords: ${centerX} ${centerY} ${centerZ}\nRadius: ${radius}`)
         }
         process.stdout.write('.')
     }
     process.stdout.write('\n')
     if (found == 0) {
         distances.sort((a, b) => a.distance < b.distance ? -1 : 1)
-        console.log(`Nessuna collisione possibile trovata, la più vicina è: ${distances.shift().fileName}`)
+        console.log(`No possible collision has been found, the nearest possible is: ${distances.shift().fileName}`)
         let cmd
         do {
             let { command } = await inquirer.prompt({
                 type: 'input',
                 name: 'command',
-                message: 'Se vuoi andare alla prossima, digita n altrimenti q per uscire: '
+                message: 'If you want to get the next one press n, otherwise q: '
             })
             cmd = command
-            console.log(`Prossima più probabile: ${distances.shift().fileName}`)
+            console.log(`Next possible collision: ${distances.shift().fileName}`)
         } while (cmd != 'q')
     }
 }
