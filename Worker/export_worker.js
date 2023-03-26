@@ -3,7 +3,8 @@ const fs = require('fs/promises')
 const { parentPort, workerData } = require('node:worker_threads');
 
 async function parse() {
-    let {collisionFiles, collisionsFolder } = workerData
+    let collisionFiles = workerData.work
+    let { collisionsFolder } = workerData.data
     let parser = new XMLParser({ ignoreAttributes: false })
     let collisionsCollection = {}
     let i = 0
