@@ -27,20 +27,10 @@ async function init() {
             name: 'coordsY',
             message: 'Y Coords:'
         },
-        {
-            type: 'number',
-            name: 'coordsZ',
-            message: 'Z Coords:'
-        },
-        {
-            type: 'number',
-            name: 'searchRadius',
-            message: 'Radius:'
-        }
     ])
     collisionsFolder = collisionsFolder.replace(/'/g, '')
     let collisionFiles = await fs.readdir(collisionsFolder)
-    const searchController = new ThreadController(os.cpus().length, 'search_worker.js', collisionFiles, { collisionsFolder, coordsX, coordsY, coordsZ, searchRadius })
+    const searchController = new ThreadController(os.cpus().length, 'col_search_worker.js', collisionFiles, { collisionsFolder, coordsX, coordsY, coordsZ, searchRadius })
     let threadResults = await searchController.startThreadedJob()
     let result = []
     for (let threadId in threadResults) {
